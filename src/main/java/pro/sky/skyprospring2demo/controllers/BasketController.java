@@ -14,17 +14,13 @@ import java.util.Map;
 public class BasketController {
     private final BasketService basketService;
 
-    public BasketController() {
-        this(null);
-    }
-
     public BasketController(BasketService basketService) {
         this.basketService = basketService;
     }
 
 
     @GetMapping("/add")
-    public List<Integer> add(@RequestParam List<Integer> ids) {
+    public Map<Integer, Integer> add(@RequestParam List<Integer> ids) {
         return basketService.add(ids);
 
     }
