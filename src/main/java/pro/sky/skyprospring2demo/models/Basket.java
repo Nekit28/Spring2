@@ -1,5 +1,6 @@
 package pro.sky.skyprospring2demo.models;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -7,11 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class Basket {
 
     private final Map<Integer, Integer> countByOrderId  = new HashMap<>();
-    public List<Integer> add(List<Integer> ids) {
+    public Map<Integer, Integer> add(List<Integer> ids) {
 
         for (Integer i:ids) {
             if (countByOrderId.containsKey(i)) {
@@ -20,7 +20,7 @@ public class Basket {
                 countByOrderId.put(i, 1);
             }
         }
-        return ids;
+        return countByOrderId;
 
     }
 

@@ -10,13 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class BasketController {
     private final BasketService basketService;
-
-    public BasketController() {
-        this(null);
-    }
 
     public BasketController(BasketService basketService) {
         this.basketService = basketService;
@@ -24,7 +20,7 @@ public class BasketController {
 
 
     @GetMapping("/add")
-    public List<Integer> add(@RequestParam List<Integer> ids) {
+    public Map<Integer, Integer> add(@RequestParam List<Integer> ids) {
         return basketService.add(ids);
 
     }
